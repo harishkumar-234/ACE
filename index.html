@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACE — Achieve Competitive Exams</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light">
+  <header class="app-header">
+    <div class="logo" role="img" aria-label="Govt Exam Hub logo">
+      <span class="logo-badge">🎓</span>
+      <div class="logo-text">
+        <h1>ACE</h1>
+        <p>Achieve Competitive Exams</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Navigation buttons -->
+      <nav class="top-nav" aria-label="Main navigation">
+        <button class="nav-btn active" data-target="home">Home</button>
+        <button class="nav-btn" data-target="about">About</button>
+        <button class="nav-btn" data-target="exams">Exams</button>
+        <button class="nav-btn" data-target="feedback">Feedback</button>
+        <button class="nav-btn" data-target="contact">Contact</button>
+      </nav>
+
+      <button id="themeToggle" class="btn ghost" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><button data-level="home" class="crumb">Home</button></li>
+      </ol>
+    </nav>
+
+    <!-- Home / Intro -->
+    <section id="section-home" class="card">
+      <div class="card-header">
+        <h2>Welcome to ACE</h2>
+        <p>Curated study materials, blueprints, previous papers and quizzes for popular government exams.</p>
+      </div>
+
+      <div class="hero">
+        <div class="hero-left">
+          <h3>Study smarter. Practice faster.</h3>
+          <p>Choose an exam category from the list, open streams and start a quiz or review official PDFs — all from your browser.</p>
+          <div class="hero-cta">
+            <button id="startExams" class="btn">Explore Exams</button>
+            <a class="tiny link-muted" href="#footer">Created by Harish Kumar</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="floating-card">
+            <div class="icon-large">🧭</div>
+            <div>
+              <strong>Quick Finder</strong>
+              <p class="tiny">Search blueprints & previous papers using the Smart Finder on exam pages.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Exam Categories (exams section reused) -->
+    <section id="section-exams" class="card hidden">
+      <div class="card-header">
+        <h2>Select Exam Category</h2>
+        <p>Choose from popular government exam tracks.</p>
+      </div>
+      <div id="examGrid" class="grid cards"></div>
+    </section>
+
+    <!-- Step 2: Streams/Groups -->
+    <section id="section-streams" class="card hidden">
+      <div class="card-header">
+        <h2 id="streamsTitle">Select Stream</h2>
+        <p id="streamsSubtitle"></p>
+      </div>
+      <div id="streamGrid" class="grid cards"></div>
+    </section>
+
+    <!-- Step 3: Resources -->
+    <section id="section-resources" class="card hidden">
+      <div class="card-header">
+        <h2 id="resourcesTitle">Resources</h2>
+        <p>Study Materials • Blueprints • Previous Papers & Answers • Quiz</p>
+      </div>
+      <div class="resource-actions">
+        <button class="pill" data-resource="materials">📚 Study Materials</button>
+        <button class="pill" data-resource="blueprints">🧭 Blueprints</button>
+        <button class="pill" data-resource="papers">📝 Previous Papers & Answers</button>
+        <button class="pill primary" data-resource="quiz">🧪 Quiz</button>
+      </div>
+
+      <div id="smartSearch" class="smart-search hidden">
+        <h3>Smart Finder</h3>
+        <p>Quickly open web results tailored to your selection:</p>
+        <div class="chip-row" id="smartLinks"></div>
+      </div>
+
+      <div id="contentArea" class="content-area">
+        <div class="placeholder">
+          <div class="illustration">🔎</div>
+          <h3>Select a resource above</h3>
+          <p>We’ll show curated links or launch a quiz for the chosen track.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="section-about" class="card hidden">
+      <div class="card-header">
+        <h2>About ACE</h2>
+        <p>Designed to help aspirants prepare efficiently with curated resources and lightweight quizzes.</p>
+      </div>
+      <div class="content-area">
+        <h3>Mission</h3>
+        <p>Make exam preparation simpler and faster by collecting blueprint information, syllabus PDFs and practice quizzes in one place.</p>
+        <h3>Features</h3>
+        <ul>
+          <li>Offline-friendly: add resources to the `app.js` data model</li>
+          <li>Small quizzes for quick practice</li>
+          <li>Smart Finder opens targeted Google searches for official PDFs</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Feedback -->
+    <section id="section-feedback" class="card hidden">
+      <div class="card-header">
+        <h2>Send Feedback</h2>
+        <p>Your feedback helps improve the hub — share suggestions or report issues.</p>
+      </div>
+      <div class="content-area">
+        <form id="feedbackForm" class="form">
+          <div class="form-row">
+            <label for="fbName">Name</label>
+            <input id="fbName" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-row">
+            <label for="fbEmail">Email</label>
+            <input id="fbEmail" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-row">
+            <label for="fbMessage">Message</label>
+            <textarea id="fbMessage" name="message" rows="5" placeholder="How can we improve?" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn">Submit Feedback</button>
+            <button type="button" id="clearFeedback" class="btn alt">Clear</button>
+          </div>
+        </form>
+        <div id="feedbackThanks" class="placeholder hidden">
+          <div class="illustration">🎉</div>
+          <h3>Thanks for your feedback!</h3>
+          <p>We saved your message locally so it remains available on this browser.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="section-contact" class="card hidden">
+      <div class="card-header">
+        <h2>Contact</h2>
+        <p>Get in touch with the creator.</p>
+      </div>
+      <div class="content-area contact-grid">
+        <div class="contact-item">
+          <h3>Harish Kumar</h3>
+          <p><strong>Phone:</strong> 9952242624</p>
+          <p><strong>Email:</strong> <a href="mailto:12345@gmail.com">harishhari3045@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Location</h3>
+          <p>India</p>
+          <p class="tiny">Available to help with site updates and curated resources.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="app-footer">
+    <div>Built for fast learning • No logins • Works offline (content you add stays in your browser)</div>
+    <div class="tiny">© <span id="year"></span> Created By Harish Kumar</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
